@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "context": {
+    "purpose": "DFRNT UI Design System — aesthetic rules for brand-aligned, mathematically beautiful interfaces.",
+    "description": [
+      "DFRNT is a high-performance lifestyle brand combining discipline, elegance, and rebellion.",
+      "Its design system must visually reflect sovereignty, precision, and flow.",
+      "The interface should feel architectural — clean, measured, minimal, powerful.",
+      "Mathematical beauty: apply the golden ratio, modular scale, and balanced whitespace across elements."
+    ],
+    "rules": [
+      "All UI must use DFRNT brand palette and spacing rhythm.",
+      "Typography, layout, and proportions follow the golden ratio (1:1.618) and 4-based modular scale.",
+      "Components should appear balanced, intentional, and devoid of visual noise.",
+      "Never use harsh gradients, shadows, or rounded corners without reason — restraint = power.",
+      "Hierarchy and spacing should always imply control and sophistication.",
+      "Whitespace is a design element — use it generously.",
+      "Animations (via GSAP) must feel physical and precise — velocity-based, no bouncy easing."
+    ],
+    "style": {
+      "theme": {
+        "colors": {
+          "primary": "#FF4400",
+          "primaryDark": "#C23600",
+          "accent": "#FF5E1A",
+          "background": "#0A0A0A",
+          "surface": "#111111",
+          "border": "#1C1C1C",
+          "textPrimary": "#FFFFFF",
+          "textSecondary": "#A3A3A3",
+          "muted": "#2B2B2B",
+          "success": "#00C853",
+          "warning": "#FFB300",
+          "error": "#E53935"
+        },
+        "typography": {
+          "fontFamily": {
+            "sans": "'Inter', 'Helvetica Neue', sans-serif",
+            "serif": "'Playfair Display', serif",
+            "mono": "'JetBrains Mono', monospace"
+          },
+          "sizes": {
+            "xs": "0.75rem",
+            "sm": "0.875rem",
+            "base": "1rem",
+            "lg": "1.25rem",
+            "xl": "1.618rem",
+            "2xl": "2.618rem",
+            "3xl": "4.236rem"
+          },
+          "lineHeight": {
+            "tight": "1.2",
+            "normal": "1.5",
+            "loose": "1.618"
+          },
+          "fontWeight": {
+            "regular": 400,
+            "medium": 500,
+            "semibold": 600,
+            "bold": 700
+          }
+        },
+        "radius": {
+          "none": "0px",
+          "sm": "4px",
+          "md": "8px",
+          "lg": "16px",
+          "xl": "24px",
+          "2xl": "32px"
+        },
+        "spacing": {
+          "scale": "4px modular system",
+          "values": [4, 8, 12, 16, 24, 32, 48, 64]
+        },
+        "shadows": {
+          "none": "none",
+          "soft": "0 2px 8px rgba(0,0,0,0.25)",
+          "medium": "0 4px 12px rgba(0,0,0,0.35)",
+          "hard": "0 8px 24px rgba(0,0,0,0.45)"
+        }
+      }
+    },
+    "component_rules": [
+      "Use semantic component naming (Button, Card, Input, Navbar, Modal, Section).",
+      "All components must be responsive and follow the golden grid (8–12 columns).",
+      "Prefer contrast over decoration — primary on black, white on accent, muted gray for secondary text.",
+      "Buttons: solid = primary intent, outline = secondary, ghost = tertiary.",
+      "Cards: surface color = #111111 with subtle border (#1C1C1C), corner radius = 16px, shadow = soft.",
+      "Typography hierarchy: h1–h6 use serif for hero/headers, sans for UI text.",
+      "Apply vertical rhythm: base spacing unit (4px) × Fibonacci scaling for spacing between sections.",
+      "Icons: use lucide-react icons; size them based on font scale (sm = 16px, base = 20px, lg = 24px)."
+    ],
+    "animation_rules": [
+      "Use GSAP for scroll, reveal, and parallax effects.",
+      "Animation timing: follow natural motion curves — slow in/out, strong deceleration.",
+      "Never use arbitrary timing values — base them on the 1.618x rule.",
+      "Avoid excessive movement; focus on subtle kinetic feedback.",
+      "Entrance animations: opacity + transformY(-20px) with duration 0.618s.",
+      "Exit animations: reverse with smooth fade."
+    ],
+    "layout_rules": [
+      "Use a consistent grid system with max width of 1440px.",
+      "Section padding: 64px top/bottom on desktop, 32px on mobile.",
+      "Maintain vertical rhythm by aligning text baselines to grid multiples.",
+      "Ensure visual balance between whitespace and content density.",
+      "Use flex and grid layouts — avoid absolute positioning except for controlled animation layers."
+    ],
+    "examples": [
+      "Hero section: full viewport height, serif headline, minimal accent, subtle GSAP reveal.",
+      "Product card: dark surface, bold typography, high contrast CTA, perfect 1.618:1 aspect ratio.",
+      "Button: primary = bg-[#FF4400] text-white, hover darken 10%, radius 8px, padding 12px 24px.",
+      "Typography pairings: Playfair Display for headlines, Inter for UI copy, JetBrains Mono for data labels."
+    ]
+  }
+}

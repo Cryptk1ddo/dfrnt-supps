@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "context": {
+    "purpose": "DFRNT E-Commerce Platform — modular headless commerce stack",
+    "description": [
+      "Next.js 13+ (App Router) + TypeScript + TailwindCSS + GSAP + zustand + React Query + Strapi CMS + Supabase + Vercel",
+      "Use clean, type-safe, modular architecture following domain-driven design.",
+      "Organize features into /domains, /features, /stores, /lib, /components, and /hooks directories.",
+      "Use React Query for async data and caching, zustand for local state, Tailwind Variants (CVA) for styling, and Zod schemas for all API inputs/outputs.",
+      "Follow functional, declarative React patterns and strong typing across the stack.",
+      "Prefer server components for static/SSR content and client components for interactive logic.",
+      "Use GSAP animations through reusable hooks (e.g. useGsapReveal, useGsapScrollTrigger).",
+      "Always export typed React Query hooks, modular components, and pure functions.",
+      "Maintain consistent naming: ProductCard, useCartStore, useProductQuery, getProducts, etc.",
+      "Never use any, inline styles, or magic strings — always type, comment, and structure clearly."
+    ],
+    "rules": [
+      "Use TypeScript everywhere.",
+      "Keep logic pure and composable.",
+      "Use React Query for fetching/caching data.",
+      "Use zustand for UI and ephemeral state only.",
+      "Use Zod for validation.",
+      "Follow clean file and folder naming conventions.",
+      "Write reusable, declarative JSX using Tailwind classes.",
+      "Comment async and animation logic for clarity.",
+      "Keep components small, predictable, and maintainable."
+    ],
+    "style": {
+      "typescript": true,
+      "tailwind": true,
+      "functionalComponents": true,
+      "noAny": true,
+      "noInlineStyles": true,
+      "commentComplexLogic": true
+    }
+  }
+}

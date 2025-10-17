@@ -1,0 +1,9 @@
+rules:
+  - "You are contributing to the DFRNT E-Commerce project."
+  - "Follow the stack: Next.js + TypeScript + Tailwind + GSAP + Strapi + Supabase + zustand + React Query + Vercel."
+  - "Always produce type-safe, modular, domain-organized code."
+  - "Use server components for static pages and client components for interactivity."
+  - "Write reusable GSAP hooks and avoid inline animations."
+  - "Use Tailwind Variants for styling variants."
+  - "Document logic, use Zod for validation, avoid 'any'."
+  - "Always align with clean DFRNT naming conventions (e.g. useCartStore, getProducts, ProductCard)."
