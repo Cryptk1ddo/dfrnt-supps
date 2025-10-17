@@ -39,6 +39,8 @@ import { LimitedOfferTimer } from '@/components/ui/LimitedOfferTimer'
 import { FreeShippingProgress } from '@/components/ui/FreeShippingProgress'
 import { FrequentlyBoughtTogether } from '@/components/catalog/FrequentlyBoughtTogether'
 import { YouMayAlsoLike } from '@/components/catalog/YouMayAlsoLike'
+import { VolumePricing } from '@/components/catalog/VolumePricing'
+import { SubscriptionComparison } from '@/components/catalog/SubscriptionComparison'
 import { getFrequentlyBoughtTogether, getYouMayAlsoLike } from '@/lib/recommendations'
 import { getAllProducts } from '@/lib/mock-data'
 
@@ -1723,6 +1725,26 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
           <YouMayAlsoLike products={youMayAlsoLike} />
         </div>
       )}
+
+      {/* Volume Pricing - Buy More Save More */}
+      <VolumePricing
+        basePrice={product.price}
+        productName={product.name}
+        productId={product.id}
+        onAddToCart={(quantity) => {
+          for (let i = 0; i < quantity; i++) {
+            addItem(product, 1)
+          }
+          openCart()
+        }}
+      />
+
+      {/* Subscription vs One-Time Comparison */}
+      <SubscriptionComparison
+        basePrice={product.price}
+        subscriptionDiscount={getSubscriptionDiscount()}
+        productName={product.name}
+      />
 
       {/* Subscription Savings Calculator - ROI */}
       {purchaseType === 'subscribe' && (
