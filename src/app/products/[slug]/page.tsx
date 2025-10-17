@@ -37,6 +37,10 @@ import { ProductExitIntentHandler } from '@/components/modals/ProductExitIntentH
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 import { LimitedOfferTimer } from '@/components/ui/LimitedOfferTimer'
 import { FreeShippingProgress } from '@/components/ui/FreeShippingProgress'
+import { FrequentlyBoughtTogether } from '@/components/catalog/FrequentlyBoughtTogether'
+import { YouMayAlsoLike } from '@/components/catalog/YouMayAlsoLike'
+import { getFrequentlyBoughtTogether, getYouMayAlsoLike } from '@/lib/recommendations'
+import { getAllProducts } from '@/lib/mock-data'
 
 // Subscription frequency tiers with progressive discounts
 const subscriptionTiers = [
@@ -187,6 +191,11 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       helpful: 12,
     },
   ]
+
+  // Get recommendation data
+  const allProducts = getAllProducts()
+  const frequentlyBoughtTogether = getFrequentlyBoughtTogether(product, allProducts, 2)
+  const youMayAlsoLike = getYouMayAlsoLike(product, allProducts, 6)
 
   return (
     <>
@@ -1689,12 +1698,31 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
 
           <div className="mt-12 text-center">
             <p className="text-neutral-400 mb-4">Still have questions?</p>
-            <Button variant="outline" size="lg" className="border-neutral-700 hover:border-accent">
-              Contact Support
+            <Button variant="outline" size="lg">
+              Contact Our Support Team
             </Button>
           </div>
         </div>
       </div>
+
+      {/* Frequently Bought Together - Smart Bundle Recommendations */}
+      {frequentlyBoughtTogether.length > 0 && (
+        <div className="relative bg-black py-16 border-t border-neutral-800">
+          <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+            <FrequentlyBoughtTogether
+              currentProduct={product}
+              suggestedProducts={frequentlyBoughtTogether}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* You May Also Like - Cross-Sell Carousel */}
+      {youMayAlsoLike.length > 0 && (
+        <div className="relative bg-black border-t border-neutral-800">
+          <YouMayAlsoLike products={youMayAlsoLike} />
+        </div>
+      )}
 
       {/* Subscription Savings Calculator - ROI */}
       {purchaseType === 'subscribe' && (
