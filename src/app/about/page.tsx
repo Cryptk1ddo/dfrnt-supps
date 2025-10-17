@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Shield, Zap, TrendingUp, Target, Users, Sparkles, Award, Heart, Brain, Flame, Eye } from 'lucide-react'
+import { ArrowRight, Shield, Target, Users, Sparkles, Award, Heart, Brain, Flame, Eye } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
 const principles = [
@@ -219,11 +219,11 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-6 text-lg text-neutral-300 leading-relaxed">
                 <p>
-                  You're 28–45, building something that matters. You're status-conscious but privately selective. 
-                  You don't buy supplements—you invest in systems.
+                  You&apos;re 28–45, building something that matters. You&apos;re status-conscious but privately selective. 
+                  You don&apos;t buy supplements—you invest in systems.
                 </p>
                 <p>
-                  You're time-poor but refuse to compromise on quality. You demand transparency because you've 
+                  You&apos;re time-poor but refuse to compromise on quality. You demand transparency because you&apos;ve 
                   been burned by marketing hype before. You want results, not promises.
                 </p>
                 <p className="text-neutral-50 font-semibold text-xl">
@@ -234,7 +234,7 @@ export default function AboutPage() {
                   is disclosed with complete transparency. Every claim is backed by peer-reviewed research.
                 </p>
                 <p className="text-neutral-400 italic border-l-2 border-accent pl-6">
-                  "We don't create followers. We equip sovereigns."
+                  &quot;We don&apos;t create followers. We equip sovereigns.&quot;
                 </p>
               </div>
             </div>

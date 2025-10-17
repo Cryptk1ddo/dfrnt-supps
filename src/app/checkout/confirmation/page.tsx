@@ -3,10 +3,10 @@
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Card, CardContent } from '@/components/ui/Card'
+import { Suspense } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
-import { CheckCircle, Package, Mail, ArrowRight, Truck, Shield, Award, Sparkles, TrendingUp, Zap, Target, Clock } from 'lucide-react'
+import { CheckCircle, Package, Mail, ArrowRight, Truck, Shield, Award, Sparkles, Clock } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import confetti from 'canvas-confetti'
 import { useCartStore } from '@/domains/cart/stores/useCartStore'
@@ -48,12 +48,11 @@ const upsellProducts = [
   },
 ]
 
-export default function OrderConfirmationPage() {
+function OrderConfirmationContent() {
   const searchParams = useSearchParams()
   const orderId = searchParams.get('orderId') || `ORD-${Date.now()}`
   const [selectedUpsell, setSelectedUpsell] = useState<string | null>(null)
   const [upsellAdded, setUpsellAdded] = useState(false)
-  const addItem = useCartStore((state) => state.addItem)
 
   useEffect(() => {
     // Premium confetti celebration! 🎉
@@ -65,7 +64,7 @@ export default function OrderConfirmationPage() {
       return Math.random() * (max - min) + min
     }
 
-    const interval: any = setInterval(function () {
+    const interval: NodeJS.Timeout = setInterval(function () {
       const timeLeft = animationEnd - Date.now()
 
       if (timeLeft <= 0) {
@@ -128,7 +127,7 @@ export default function OrderConfirmationPage() {
             </p>
             <p className="text-neutral-400 max-w-2xl mx-auto">
               Your order <span className="font-mono text-accent font-semibold">#{orderId}</span> has been confirmed. 
-              We'll send you tracking information once it ships.
+              We&apos;ll send you tracking information once it ships.
             </p>
           </div>
 
@@ -386,5 +385,20 @@ export default function OrderConfirmationPage() {
         </div>
       </section>
     </div>
+  )
+}
+
+export default function OrderConfirmationPage() {
+  return (
+    <Suspense fallback={
+      <div className="bg-black min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+          <p className="text-neutral-400">Loading confirmation...</p>
+        </div>
+      </div>
+    }>
+      <OrderConfirmationContent />
+    </Suspense>
   )
 }

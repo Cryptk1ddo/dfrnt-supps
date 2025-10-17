@@ -7,10 +7,9 @@ import { useCartStore } from '@/domains/cart/stores/useCartStore'
 import { ShippingForm } from '@/domains/checkout/components/ShippingForm'
 import { PaymentForm } from '@/domains/checkout/components/PaymentForm'
 import { OrderReview } from '@/domains/checkout/components/OrderReview'
-import { Card, CardContent } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { formatPrice } from '@/lib/utils'
-import { Check, Lock, Shield, CreditCard, Truck } from 'lucide-react'
+import { Check, Lock, CreditCard, Truck } from 'lucide-react'
 
 const steps: { id: CheckoutStep; label: string }[] = [
   { id: 'shipping', label: 'Shipping' },
@@ -54,7 +53,6 @@ export default function CheckoutPage() {
           {steps.map((step, index) => {
             const isCompleted = index < currentStepIndex
             const isCurrent = step.id === currentStep
-            const isUpcoming = index > currentStepIndex
 
             return (
               <div key={step.id} className="flex flex-1 items-center">

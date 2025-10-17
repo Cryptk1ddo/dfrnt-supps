@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, Suspense } from 'react'
 import { Filter, ArrowUpDown, TrendingUp } from 'lucide-react'
 import { getProducts } from '@/lib/strapi/client'
 import { ProductCard } from '@/domains/catalog/components/ProductCard'
@@ -22,7 +22,7 @@ const categories = [
 
 type SortOption = 'featured' | 'price-asc' | 'price-desc' | 'name'
 
-export default function ProductsPage() {
+function ProductsPageContent() {
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get('category') || 'all'
   const [selectedCategory, setSelectedCategory] = useState(categoryParam)
@@ -152,5 +152,20 @@ export default function ProductsPage() {
         </>
       )}
     </div>
+  )
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={
+      <div className="bg-black min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+          <p className="text-neutral-400">Loading products...</p>
+        </div>
+      </div>
+    }>
+      <ProductsPageContent />
+    </Suspense>
   )
 }
