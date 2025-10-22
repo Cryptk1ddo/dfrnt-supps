@@ -191,7 +191,7 @@ export default function HomePage() {
                 {/* Main hero image */}
                 <div className="relative h-full rounded-3xl overflow-hidden border border-neutral-50/10 shadow-2xl shadow-black/50 group-hover:border-accent/30 transition-all duration-500">
                   <Image
-                    src="https://i.pinimg.com/1200x/e8/9b/80/e89b80fc933317b02d2cc923006ee5ce.jpg"
+                    src="https://i.pinimg.com/736x/fb/32/f2/fb32f286b87d2b00b010b485e56e65fd.jpg"
                     alt="DFRNT supplements and performance tools"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
