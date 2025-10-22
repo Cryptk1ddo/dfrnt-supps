@@ -44,8 +44,9 @@ import { SubscriptionComparison } from '@/components/catalog/SubscriptionCompari
 import InteractiveIngredients from '@/components/catalog/InteractiveIngredients'
 import BenefitsTimeline from '@/components/catalog/BenefitsTimeline'
 import BeforeAfterSlider from '@/components/catalog/BeforeAfterSlider'
+import ProductEducationHub from '@/components/catalog/ProductEducationHub'
 import { getFrequentlyBoughtTogether, getYouMayAlsoLike } from '@/lib/recommendations'
-import { getAllProducts, mockIngredients, mockBenefitsTimeline } from '@/lib/mock-data'
+import { getAllProducts, mockIngredients, mockBenefitsTimeline, mockEducationContent } from '@/lib/mock-data'
 
 // Subscription frequency tiers with progressive discounts
 const subscriptionTiers = [
@@ -1736,6 +1737,20 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
             title="Real Results from Real People"
             description="See the transformation our customers experience. These are actual before and after photos from verified customers who consistently used DFRNT Foundation for 8+ weeks."
             timeframe="8 weeks"
+          />
+        </div>
+      </div>
+
+      {/* Product Education Hub - Deep Dive Content */}
+      <div className="relative bg-black py-20 border-t border-neutral-800">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <ProductEducationHub
+            howItWorks={mockEducationContent.foundation.howItWorks}
+            blogPosts={mockEducationContent.foundation.blogPosts}
+            videos={mockEducationContent.foundation.videos}
+            guides={mockEducationContent.foundation.guides}
+            podcasts={mockEducationContent.foundation.podcasts}
+            productName={product.name}
           />
         </div>
       </div>
