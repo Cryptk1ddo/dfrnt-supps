@@ -45,8 +45,9 @@ import InteractiveIngredients from '@/components/catalog/InteractiveIngredients'
 import BenefitsTimeline from '@/components/catalog/BenefitsTimeline'
 import BeforeAfterSlider from '@/components/catalog/BeforeAfterSlider'
 import ProductEducationHub from '@/components/catalog/ProductEducationHub'
+import TrustSignals from '@/components/catalog/TrustSignals'
 import { getFrequentlyBoughtTogether, getYouMayAlsoLike } from '@/lib/recommendations'
-import { getAllProducts, mockIngredients, mockBenefitsTimeline, mockEducationContent } from '@/lib/mock-data'
+import { getAllProducts, mockIngredients, mockBenefitsTimeline, mockEducationContent, mockTrustSignals } from '@/lib/mock-data'
 
 // Subscription frequency tiers with progressive discounts
 const subscriptionTiers = [
@@ -1751,6 +1752,18 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
             guides={mockEducationContent.foundation.guides}
             podcasts={mockEducationContent.foundation.podcasts}
             productName={product.name}
+          />
+        </div>
+      </div>
+
+      {/* Trust & Credibility Signals - Social Proof */}
+      <div className="relative bg-gradient-to-b from-black via-brand-jet-graphite to-black py-20 border-t border-neutral-800">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <TrustSignals
+            videoTestimonials={mockTrustSignals.videoTestimonials}
+            certifications={mockTrustSignals.certifications}
+            expertEndorsements={mockTrustSignals.expertEndorsements}
+            mediaFeatures={mockTrustSignals.mediaFeatures}
           />
         </div>
       </div>
