@@ -406,7 +406,7 @@ export function getProductsByCategory(category: string): Product[] {
 }
 
 /**
- * Search products
+ * Search products by query string
  */
 export function searchProducts(query: string): Product[] {
   const lowerQuery = query.toLowerCase()
@@ -417,3 +417,234 @@ export function searchProducts(query: string): Product[] {
       product.tags?.some((tag) => tag.toLowerCase().includes(lowerQuery))
   )
 }
+
+/**
+ * Mock ingredient data for interactive visualization
+ */
+export const mockIngredients = {
+  foundation: [
+    {
+      id: 'vitamin-d3',
+      name: 'Vitamin D3 (Cholecalciferol)',
+      dosage: '5,000 IU',
+      category: 'core' as const,
+      icon: 'award' as const,
+      color: 'from-yellow-500 to-orange-500',
+      shortDescription: 'Master hormone regulator essential for testosterone synthesis, immunity, and calcium absorption.',
+      detailedDescription: 'Vitamin D3 is a fat-soluble hormone precursor that plays a fundamental role in over 200 genetic expressions. It regulates testosterone production, immune function, bone health, and mood regulation. Studies show that optimal D3 levels (50-80 ng/mL) are associated with 25% higher testosterone levels and significantly reduced inflammation.',
+      benefits: [
+        'Increases testosterone production by up to 25%',
+        'Enhances immune system function and reduces inflammation',
+        'Improves bone density and calcium absorption',
+        'Supports mood regulation and reduces depression risk',
+        'Optimizes muscle protein synthesis',
+        'Reduces risk of chronic diseases including diabetes and cardiovascular disease',
+      ],
+      studies: [
+        {
+          title: 'Effect of vitamin D supplementation on testosterone levels in men',
+          source: 'Hormone and Metabolic Research',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21154195/',
+          year: 2011,
+        },
+        {
+          title: 'Vitamin D and the immune system: new perspectives on an old theme',
+          source: 'Rheumatic Disease Clinics',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22023896/',
+          year: 2012,
+        },
+        {
+          title: 'Vitamin D status and muscle function in post-menarcheal adolescent girls',
+          source: 'Journal of Clinical Endocrinology & Metabolism',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20685857/',
+          year: 2010,
+        },
+      ],
+    },
+    {
+      id: 'vitamin-k2',
+      name: 'Vitamin K2 (MK-7)',
+      dosage: '200 mcg',
+      category: 'supporting' as const,
+      icon: 'shield' as const,
+      color: 'from-green-500 to-emerald-500',
+      shortDescription: 'Directs calcium to bones and teeth while preventing arterial calcification.',
+      detailedDescription: 'Vitamin K2 (MK-7) is the most bioavailable form of vitamin K, with a half-life of 72 hours. It works synergistically with Vitamin D3 to ensure calcium is deposited in bones rather than soft tissues. This is critical for cardiovascular health and bone density optimization.',
+      benefits: [
+        'Prevents arterial calcification and supports cardiovascular health',
+        'Enhances bone mineral density by 3-6%',
+        'Works synergistically with D3 for optimal calcium utilization',
+        'Reduces fracture risk by up to 60%',
+        'Supports dental health and prevents cavities',
+      ],
+      studies: [
+        {
+          title: 'Vitamin K2 and bone and cardiovascular health',
+          source: 'Advances in Nutrition',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22332096/',
+          year: 2012,
+        },
+        {
+          title: 'Vitamin K2 supplementation improves insulin sensitivity',
+          source: 'Diabetes Care',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21617109/',
+          year: 2011,
+        },
+      ],
+    },
+    {
+      id: 'zinc',
+      name: 'Zinc Glycinate',
+      dosage: '30 mg',
+      category: 'core' as const,
+      icon: 'beaker' as const,
+      color: 'from-blue-500 to-indigo-500',
+      shortDescription: 'Critical mineral for testosterone production, immune function, and protein synthesis.',
+      detailedDescription: 'Zinc is involved in over 300 enzymatic reactions in the body. It is the most important mineral for testosterone production, with deficiency linked to 40-50% reductions in T levels. Glycinate form ensures maximum absorption without GI distress.',
+      benefits: [
+        'Essential cofactor in testosterone synthesis',
+        'Boosts immune system by 50% in deficient individuals',
+        'Enhances protein synthesis and muscle recovery',
+        'Improves sperm quality and fertility',
+        'Supports thyroid function and metabolism',
+        'Powerful antioxidant protecting against oxidative stress',
+      ],
+      studies: [
+        {
+          title: 'Zinc status and testosterone levels of healthy adults',
+          source: 'Nutrition',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8875519/',
+          year: 1996,
+        },
+        {
+          title: 'Zinc supplementation increases testosterone in athletes',
+          source: 'The Journal of Exercise Physiology',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17685720/',
+          year: 2007,
+        },
+      ],
+    },
+    {
+      id: 'magnesium',
+      name: 'Magnesium Glycinate',
+      dosage: '200 mg',
+      category: 'core' as const,
+      icon: 'trending' as const,
+      color: 'from-purple-500 to-pink-500',
+      shortDescription: 'Supports 300+ enzymatic reactions including sleep, stress response, and testosterone production.',
+      detailedDescription: 'Magnesium is the fourth most abundant mineral in the body and is critically deficient in 50% of the population. Glycinate form is chelated for superior absorption and does not cause digestive issues. Essential for deep sleep, stress management, and hormonal balance.',
+      benefits: [
+        'Increases free and total testosterone levels',
+        'Improves sleep quality and duration',
+        'Reduces cortisol and stress response',
+        'Enhances insulin sensitivity',
+        'Supports cardiovascular health and blood pressure regulation',
+        'Prevents muscle cramps and supports recovery',
+      ],
+      studies: [
+        {
+          title: 'Effects of magnesium supplementation on testosterone levels',
+          source: 'Biological Trace Element Research',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20352370/',
+          year: 2011,
+        },
+        {
+          title: 'Magnesium intake and sleep quality in elderly',
+          source: 'Journal of Research in Medical Sciences',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23853635/',
+          year: 2012,
+        },
+      ],
+    },
+    {
+      id: 'bioperine',
+      name: 'BioPerine® (Black Pepper Extract)',
+      dosage: '10 mg',
+      category: 'absorption' as const,
+      icon: 'zap' as const,
+      color: 'from-orange-500 to-red-500',
+      shortDescription: 'Dramatically enhances bioavailability of all other ingredients by up to 2000%.',
+      detailedDescription: 'BioPerine® is a patented extract from black pepper containing 95% piperine. It inhibits enzymes that metabolize nutrients too quickly, allowing for significantly higher absorption rates. This means you get more benefit from every ingredient in the formula.',
+      benefits: [
+        'Increases nutrient absorption by up to 2000%',
+        'Enhances bioavailability of vitamins and minerals',
+        'Improves thermogenesis and metabolic rate',
+        'Supports cognitive function and memory',
+      ],
+      studies: [
+        {
+          title: 'Influence of piperine on the pharmacokinetics of curcumin',
+          source: 'Planta Medica',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9619120/',
+          year: 1998,
+        },
+      ],
+    },
+  ],
+};
+
+/**
+ * Mock benefits timeline data
+ */
+export const mockBenefitsTimeline = {
+  foundation: [
+    {
+      week: 'Week 1-2',
+      title: 'Initial Adaptation',
+      description: 'Your body begins absorbing and utilizing essential nutrients.',
+      intensity: 25,
+      icon: 'zap' as const,
+      benefits: [
+        'Improved energy levels throughout the day',
+        'Better sleep quality and faster sleep onset',
+        'Reduced afternoon fatigue',
+        'Slight improvements in mood and focus',
+      ],
+    },
+    {
+      week: 'Week 3-4',
+      title: 'Foundation Building',
+      description: 'Nutrient stores replenish, hormonal optimization begins.',
+      intensity: 50,
+      icon: 'trending' as const,
+      benefits: [
+        'Noticeable increase in morning energy',
+        'Enhanced workout performance and stamina',
+        'Improved stress resilience',
+        'Better muscle recovery post-exercise',
+        'Clearer skin and stronger nails',
+      ],
+    },
+    {
+      week: 'Week 5-8',
+      title: 'Optimization Phase',
+      description: 'Peak benefits emerge as systems reach optimal function.',
+      intensity: 80,
+      icon: 'target' as const,
+      benefits: [
+        'Significant testosterone level improvements (15-25% increase)',
+        'Enhanced libido and sexual performance',
+        'Increased lean muscle mass and strength',
+        'Optimized immune function with fewer sick days',
+        'Consistent energy without afternoon crashes',
+        'Improved bone density markers',
+      ],
+    },
+    {
+      week: 'Week 9+',
+      title: 'Long-Term Benefits',
+      description: 'Sustained optimization and compounding health benefits.',
+      intensity: 100,
+      icon: 'check' as const,
+      benefits: [
+        'Sustained hormonal balance and vitality',
+        'Reduced inflammation and chronic disease risk',
+        'Enhanced cognitive clarity and focus',
+        'Optimal metabolic function',
+        'Improved cardiovascular health markers',
+        'Better stress management and mood regulation',
+        'Maximum strength and muscle development',
+      ],
+    },
+  ],
+};

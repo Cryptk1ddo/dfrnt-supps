@@ -41,8 +41,11 @@ import { FrequentlyBoughtTogether } from '@/components/catalog/FrequentlyBoughtT
 import { YouMayAlsoLike } from '@/components/catalog/YouMayAlsoLike'
 import { VolumePricing } from '@/components/catalog/VolumePricing'
 import { SubscriptionComparison } from '@/components/catalog/SubscriptionComparison'
+import InteractiveIngredients from '@/components/catalog/InteractiveIngredients'
+import BenefitsTimeline from '@/components/catalog/BenefitsTimeline'
+import BeforeAfterSlider from '@/components/catalog/BeforeAfterSlider'
 import { getFrequentlyBoughtTogether, getYouMayAlsoLike } from '@/lib/recommendations'
-import { getAllProducts } from '@/lib/mock-data'
+import { getAllProducts, mockIngredients, mockBenefitsTimeline } from '@/lib/mock-data'
 
 // Subscription frequency tiers with progressive discounts
 const subscriptionTiers = [
@@ -1704,6 +1707,36 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
               Contact Our Support Team
             </Button>
           </div>
+        </div>
+      </div>
+
+      {/* Interactive Ingredients Visualization - Science-Backed Formula */}
+      <div className="relative bg-gradient-to-b from-black via-brand-jet-graphite to-black py-20 border-t border-neutral-800">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <InteractiveIngredients ingredients={mockIngredients.foundation} />
+        </div>
+      </div>
+
+      {/* Benefits Timeline - Expected Results Week by Week */}
+      <div className="relative bg-black py-20 border-t border-neutral-800">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <BenefitsTimeline 
+            phases={mockBenefitsTimeline.foundation}
+            productName={product.name}
+          />
+        </div>
+      </div>
+
+      {/* Before/After Results Slider */}
+      <div className="relative bg-gradient-to-b from-black via-brand-jet-graphite to-black py-20 border-t border-neutral-800">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <BeforeAfterSlider
+            beforeImage="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=800&fit=crop"
+            afterImage="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1200&h=800&fit=crop"
+            title="Real Results from Real People"
+            description="See the transformation our customers experience. These are actual before and after photos from verified customers who consistently used DFRNT Foundation for 8+ weeks."
+            timeframe="8 weeks"
+          />
         </div>
       </div>
 
