@@ -46,8 +46,9 @@ import BenefitsTimeline from '@/components/catalog/BenefitsTimeline'
 import BeforeAfterSlider from '@/components/catalog/BeforeAfterSlider'
 import ProductEducationHub from '@/components/catalog/ProductEducationHub'
 import TrustSignals from '@/components/catalog/TrustSignals'
+import AdvancedReviews from '@/components/catalog/AdvancedReviews'
 import { getFrequentlyBoughtTogether, getYouMayAlsoLike } from '@/lib/recommendations'
-import { getAllProducts, mockIngredients, mockBenefitsTimeline, mockEducationContent, mockTrustSignals } from '@/lib/mock-data'
+import { getAllProducts, mockIngredients, mockBenefitsTimeline, mockEducationContent, mockTrustSignals, mockReviewsData } from '@/lib/mock-data'
 
 // Subscription frequency tiers with progressive discounts
 const subscriptionTiers = [
@@ -85,7 +86,13 @@ const subscriptionTiers = [
   },
 ]
 
-export default function ProductDetailPage({ params }: { params: { slug: string } }) {
+export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  
+  return <ProductDetailPageClient slug={slug} />
+}
+
+function ProductDetailPageClient({ slug }: { slug: string }) {
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [showStickyButton, setShowStickyButton] = useState(false)
@@ -114,8 +121,8 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
   }, [])
 
   const { data: product, isLoading } = useQuery({
-    queryKey: ['product', params.slug],
-    queryFn: () => getProductBySlug(params.slug),
+    queryKey: ['product', slug],
+    queryFn: () => getProductBySlug(slug),
   })
 
   if (isLoading) {
@@ -1764,6 +1771,20 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
             certifications={mockTrustSignals.certifications}
             expertEndorsements={mockTrustSignals.expertEndorsements}
             mediaFeatures={mockTrustSignals.mediaFeatures}
+          />
+        </div>
+      </div>
+
+      {/* Advanced Reviews & Q&A System */}
+      <div className="relative bg-black py-20 border-t border-neutral-800">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <AdvancedReviews
+            reviews={mockReviewsData.foundation.reviews}
+            questions={mockReviewsData.foundation.questions}
+            productName={product.name}
+            averageRating={mockReviewsData.foundation.averageRating}
+            totalReviews={mockReviewsData.foundation.totalReviews}
+            ratingDistribution={mockReviewsData.foundation.ratingDistribution}
           />
         </div>
       </div>

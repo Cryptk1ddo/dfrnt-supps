@@ -27,6 +27,7 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    domains: ['images.unsplash.com'],
   },
 }
+
+module.exports = nextConfig
