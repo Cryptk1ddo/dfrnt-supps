@@ -22,7 +22,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'pinterest.com',
+        hostname: 'i.pinimg.com',
         port: '',
         pathname: '/**',
       },
