@@ -47,6 +47,7 @@ import BeforeAfterSlider from '@/components/catalog/BeforeAfterSlider'
 import ProductEducationHub from '@/components/catalog/ProductEducationHub'
 import TrustSignals from '@/components/catalog/TrustSignals'
 import AdvancedReviews from '@/components/catalog/AdvancedReviews'
+import InteractiveDosageGuide from '@/components/catalog/InteractiveDosageGuide'
 import { getFrequentlyBoughtTogether, getYouMayAlsoLike } from '@/lib/recommendations'
 import { getAllProducts, mockIngredients, mockBenefitsTimeline, mockEducationContent, mockTrustSignals, mockReviewsData } from '@/lib/mock-data'
 
@@ -1716,6 +1717,18 @@ function ProductDetailPageClient({ slug }: { slug: string }) {
               Contact Our Support Team
             </Button>
           </div>
+        </div>
+      </div>
+
+      {/* Interactive Dosage Guide - Personalized Recommendations */}
+      <div className="relative bg-gradient-to-b from-black via-brand-jet-graphite to-black py-20 border-t border-neutral-800">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <InteractiveDosageGuide
+            productName={product.name}
+            servingsPerContainer={30}
+            pricePerContainer={product.price}
+            servingSize="4 capsules"
+          />
         </div>
       </div>
 
