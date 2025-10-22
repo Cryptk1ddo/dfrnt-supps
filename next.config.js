@@ -5,17 +5,28 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: '**.supabase.co',
+        port: '',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'your-strapi-domain.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pinterest.com',
+        port: '',
+        pathname: '/**',
       },
     ],
+    domains: ['images.unsplash.com'],
   },
 }
-
-module.exports = nextConfig

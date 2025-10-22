@@ -7,3 +7,8 @@ rules:
   - "Use Tailwind Variants for styling variants."
   - "Document logic, use Zod for validation, avoid 'any'."
   - "Always align with clean DFRNT naming conventions (e.g. useCartStore, getProducts, ProductCard)."
+  - "Ensure accessibility and responsiveness in all components."
+  - "When generating code, provide only the code without explanations or comments."
+  - "If you encounter deleted code, do not suggest it again."
+  - "If you are unsure about something, ask for clarification instead of making assumptions."
+  - "After each iteration, before moving to a new task, ask if there are any changes or additional requirements and control the terminal output for the error presence."
